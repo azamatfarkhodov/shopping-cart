@@ -4,8 +4,7 @@ import {
   Nav,
   Container,
   Modal,
-  Button,
-  ListGroup,
+  Button
 } from "react-bootstrap";
 import { useCart } from "../contexts/use-cart";
 import Cart from "./Cart";
@@ -31,15 +30,23 @@ export default function Header() {
                 <Modal.Header closeButton>
                   <Modal.Title>Cart</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                  <Cart />
-                </Modal.Body>
-                <Modal.Footer>
-                  <h3>Total: </h3>
-                  <Button variant="dark" disabled>
-                    ${totalPrice}
-                  </Button>
-                </Modal.Footer>
+                {cart.length === 0 ? (
+                  <Modal.Body>
+                    <h3>Your cart is empty</h3>
+                  </Modal.Body>
+                ) : (
+                  <>
+                    <Modal.Body>
+                      <Cart />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <h3>Total: </h3>
+                      <Button variant="dark" disabled>
+                        ${totalPrice}
+                      </Button>
+                    </Modal.Footer>
+                  </>
+                )}
               </Modal>
             </Nav.Link>
           </Nav>

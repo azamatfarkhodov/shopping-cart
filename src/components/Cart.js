@@ -3,10 +3,7 @@ import {
   Row,
   Col,
   ListGroup,
-  Image,
-  Form,
-  Button,
-  Card,
+  Image
 } from "react-bootstrap";
 import { useCart } from "../contexts/use-cart";
 
