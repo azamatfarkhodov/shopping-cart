@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer'
+import products from './products';
+import Product from './components/Product';
+import { CartProvider } from './contexts/use-cart';
+import { Container, Row, Col } from 'react-bootstrap'
+import ProductCarousel from './components/ProductCarousel'
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartProvider>
+        <Header />
+        <Container>
+        <ProductCarousel />
+        </Container>
+        <Container>
+          <Row>
+            {products.map((product, index) => (
+              <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+        <Footer />
+    </CartProvider>
   );
 }
-
-export default App;
